@@ -1,12 +1,15 @@
 package br.com.etecia.myplanets;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     //Declarar a lista
@@ -37,18 +40,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        public Object getItem(int i) {
-            return null;
-        }
+        public Object getItem(int i) { return null; }
 
         @Override
-        public long getItemId(int i) {
-            return 0;
-        }
+        public long getItemId(int i) { return 0; }
 
         @Override
-        public View getView(int i, View view, ViewGroup viewGroup) {
-            return null;
+        public View getView(int position, View view, ViewGroup viewGroup) {
+
+            //Declarar Componentes do modelo que serao usados na lista
+            ImageView imgPlanetas;
+            TextView txtPlanetas;
+
+            View view1 = getLayoutInflater().inflate(R.layout.modelo_planetas, null);
+
+            imgPlanetas = view1.findViewById(R.id.imgModeloPlaneta);
+            txtPlanetas = view1.findViewById(R.id.txtModeloPlaneta);
+
+            //Implementar os metodos nos componentes
+            txtPlanetas.setText(nomePlanetas[position]);
+            imgPlanetas.setImageResource(imagemPlanetas[position]);
+
+            return view1;
         }
     }
 }
